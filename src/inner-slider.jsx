@@ -146,8 +146,10 @@ export var InnerSlider = React.createClass({
             {this.props.children}
           </Track>
         </div>
-        {prevArrow}
-        {nextArrow}
+        <div className="slick-arrow-container">
+          {prevArrow}
+          {nextArrow}
+        </div>
         {dots}
       </div>
     );
