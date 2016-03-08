@@ -123,8 +123,7 @@ export var InnerSlider = React.createClass({
       nextArrow: this.props.nextArrow,
       clickHandler: this.changeSlide
     };
-
-    if (this.props.arrows) {
+    if (this.props.arrows && this.state.slideCount > this.props.slidesToShow) {
       prevArrow = (<PrevArrow {...arrowProps} />);
       nextArrow = (<NextArrow {...arrowProps} />);
     }
