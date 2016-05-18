@@ -141,6 +141,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    } else {
 	      settings = (0, _objectAssign2['default'])({}, _defaultProps2['default'], this.props);
 	    }
+	    if (this.props.children.length < settings.slidesToShow) {
+	      settings.infinite = false;
+	    }
 	    if (settings === 'unslick') {
 	      // if 'unslick' responsive breakpoint setting used, just return the <Slider> tag nested HTML
 	      return _react2['default'].createElement(
