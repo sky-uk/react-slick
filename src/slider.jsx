@@ -39,6 +39,15 @@ var Slider = React.createClass({
       });
     }
   },
+
+  slickPrev: function () {
+    this.refs.innerSlider.slickPrev();
+  },
+
+  slickNext: function () {
+    this.refs.innerSlider.slickNext();
+  },
+
   render: function () {
     var settings;
     var newProps;
@@ -48,18 +57,31 @@ var Slider = React.createClass({
     } else {
       settings = assign({}, defaultProps, this.props);
     }
-    if(this.props.children.length < settings.slidesToShow) {
-      settings.infinite = false;
+
+    var children = this.props.children;
+    if(!Array.isArray(children)) {
+      children = [children]
     }
+
+    // Children may contain false or null, so we should filter them
+    children = children.filter(function(child){
+      return !!child
+    })
+
+    if (children.length <= settings.slidesToShow) {
+      settings.infinite = false;
+      settings.autoplay = false;
+    }
+
     if (settings === 'unslick') {
       // if 'unslick' responsive breakpoint setting used, just return the <Slider> tag nested HTML
       return (
-        <div>{this.props.children}</div>
+        <div>{children}</div>
       );
     } else {
       return (
-        <InnerSlider {...settings}>
-          {this.props.children}
+        <InnerSlider ref='innerSlider' {...settings}>
+          {children}
         </InnerSlider>
       );
     }
