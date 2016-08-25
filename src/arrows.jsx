@@ -6,7 +6,10 @@ import classnames from 'classnames';
 export var PrevArrow = React.createClass({
 
   clickHandler: function (options, e) {
-    if (e) { e.preventDefault(); }
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     this.props.clickHandler(options, e);
   },
   render: function () {
@@ -39,7 +42,10 @@ export var PrevArrow = React.createClass({
 
 export var NextArrow = React.createClass({
   clickHandler: function (options, e) {
-    if (e) { e.preventDefault(); }
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     this.props.clickHandler(options, e);
   },
   render: function () {
