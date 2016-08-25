@@ -9,7 +9,7 @@
     "build": "babel src --out-dir lib",
     "prepublish": "npm run clean && npm run build && gulp dist",
     "preversion": "rm -rf lib/ && ./node_modules/.bin/babel src --out-dir lib --stage 0 --optional runtime  && git add --all lib/ && git commit --allow-empty -m \"Add new lib version\"",
-    "postversion": "git push origin --tags",
+    "postversion": "git push origin master && git push origin --tags",
     "test": "karma start --single-run",
     "dev-test": "karma start"
   },
