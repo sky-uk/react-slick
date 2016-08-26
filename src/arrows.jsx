@@ -12,6 +12,7 @@ export var PrevArrow = React.createClass({
     }
     this.props.clickHandler(options, e);
   },
+
   render: function () {
     var prevClasses = {'slick-arrow': true, 'slick-prev': true};
     var prevHandler = this.clickHandler.bind(this, {message: 'previous'});
