@@ -37,7 +37,7 @@ var EventHandlers = {
         return;
       }
     }
-    // Pause autoSlider as soon as action triggered by user
+    // Pause autoPlay as soon as action triggered by user
     if (this.props.autoplay) {
       this.pause();
     }
@@ -162,7 +162,7 @@ var EventHandlers = {
     }
     if (touchObject.swipeLength > minSwipe) {
       e.preventDefault();
-      // Pause autoSlider as soon as action triggered by user
+      // Pause autoPlay as soon as action triggered by user
       if (this.props.autoplay) {
         this.pause();
       }
