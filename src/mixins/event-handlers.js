@@ -37,7 +37,10 @@ var EventHandlers = {
         return;
       }
     }
-
+    // Pause autoSlider as soon as action triggered by user
+    if (this.props.autoplay) {
+      this.pause();
+    }
     this.slideHandler(targetSlide);
   },
  
@@ -159,6 +162,10 @@ var EventHandlers = {
     }
     if (touchObject.swipeLength > minSwipe) {
       e.preventDefault();
+      // Pause autoSlider as soon as action triggered by user
+      if (this.props.autoplay) {
+        this.pause();
+      }
       if (swipeDirection === 'left') {
         this.slideHandler(this.state.currentSlide + this.props.slidesToScroll);
       } else if (swipeDirection === 'right') {
