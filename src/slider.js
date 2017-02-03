@@ -2,19 +2,22 @@
 
 import React from 'react';
 import {InnerSlider} from './inner-slider';
-import assign from 'object-assign';
 import json2mq from 'json2mq';
 import ResponsiveMixin from 'react-responsive-mixin';
 import defaultProps from './default-props';
 
 var Slider = React.createClass({
   mixins: [ResponsiveMixin],
+  innerSlider: null,
+  innerSliderRefHandler: function (ref) {
+    this.innerSlider = ref;
+  },
   getInitialState: function () {
     return {
       breakpoint: null
     };
   },
-  componentDidMount: function () {
+  componentWillMount: function () {
     if (this.props.responsive) {
       var breakpoints = this.props.responsive.map(breakpt => breakpt.breakpoint);
       breakpoints.sort((x, y) => x - y);
@@ -48,14 +51,18 @@ var Slider = React.createClass({
     this.refs.innerSlider.slickNext();
   },
 
+  slickGoTo: function (slide) {
+    this.refs.innerSlider.slickGoTo(slide)
+  },
+
   render: function () {
     var settings;
     var newProps;
     if (this.state.breakpoint) {
       newProps = this.props.responsive.filter(resp => resp.breakpoint === this.state.breakpoint);
-      settings = newProps[0].settings === 'unslick' ? 'unslick' : assign({}, this.props, newProps[0].settings);
+      settings = newProps[0].settings === 'unslick' ? 'unslick' : Object.assign({}, this.props, newProps[0].settings);
     } else {
-      settings = assign({}, defaultProps, this.props);
+      settings = Object.assign({}, defaultProps, this.props);
     }
 
     var children = this.props.children;
