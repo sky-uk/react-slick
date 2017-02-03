@@ -28,8 +28,4 @@ export default class CenterMode extends Component {
       </div>
     );
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 4444fc8a93d40e238b6296b386b33dd7512ca456
