@@ -28,7 +28,6 @@ export var PrevArrow = React.createClass({
       'data-role': 'none',
       className: classnames(prevClasses),
       currentSlide: this.props.currentSlide,
-      slideCount: this.props.slideCount,
       style: {display: 'block'},
       onClick: prevHandler
     };
