@@ -5,10 +5,20 @@
 
 Carousel component built with React. It is a react port of [slick carousel](http://kenwheeler.github.io/slick/)
 
+<<<<<<< HEAD
 # Road to 1.0
 react-slick is under active development now.
 Soon this project will have all the features of slick carousel.
 We encourage your feedback and support.
+=======
+### Important
+### Breaking changes in react-slick@0.15
+ * slickGoTo prop is deprecated in favor of slickGoTo method. Check this [slickGoTo usage example](https://github.com/akiran/react-slick/blob/master/examples/SlickGoTo.js).
+ * dist folder will be removed from the repo to simplify PR review process.  If you are using bower or relying on the dist files in githib repo, use dist files from unpkg.com
+```
+  https://unpkg.com/react-slick@0.13.6/dist/react-slick.min.js
+```
+>>>>>>> 4444fc8a93d40e238b6296b386b33dd7512ca456
 
 ### Installation
 
@@ -19,16 +29,31 @@ npm install react-slick
 Also install slick-carousel for css and font
 
 ```bash
+<<<<<<< HEAD
 bower install slick-carousel
+=======
+npm install slick-carousel
+>>>>>>> 4444fc8a93d40e238b6296b386b33dd7512ca456
 ```
 
 or add cdn link in your html
 
 ```html
+<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.3.15/slick.css" />
+=======
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+>>>>>>> 4444fc8a93d40e238b6296b386b33dd7512ca456
 ```
 
-### [Demos](http://webrafter.com/opensource/react-slick)
+### [Demos](http://neostack.com/opensource/react-slick)
+
+### [PlayGround](https://jsfiddle.net/kirana/20bumb4g/)
+Use [jsfiddle template](https://jsfiddle.net/kirana/20bumb4g/) to try react-slick with different settings.
+
+### Filing issues
+Please replicate your issue with [jsfiddle template](https://jsfiddle.net/kirana/20bumb4g/) and post it along with issue to make it easy for me to debug.
 
 ### [PlayGround](https://jsfiddle.net/kirana/20bumb4g/)
 Use [jsfiddle template](https://jsfiddle.net/kirana/20bumb4g/) to try react-slick with different settings.
@@ -76,13 +101,22 @@ var SimpleSlider = React.createClass({
 | className      | String |Additional class name for the inner slider div | Yes |
 | adaptiveHeight | bool | Adjust the slide's height automatically | Yes |
 | arrows         | bool | Should we show Left and right nav arrows | Yes |
+<<<<<<< HEAD
 | nextArrow      | React Component | Use this component for the next arrow button | Yes |
 | prevArrow      | React Component | Use this component for the prev arrow button | Yes |
+=======
+| nextArrow      | React Element | Use this element for the next arrow button | Yes |
+| prevArrow      | React Element | Use this element for the prev arrow button | Yes |
+>>>>>>> 4444fc8a93d40e238b6296b386b33dd7512ca456
 | autoplay       | bool | Should the scroller auto scroll? | Yes |
 | autoplaySpeed  |  int | delay between each auto scoll. in ms | Yes |
 | centerMode     | bool | Should we centre to a single item? | Yes |
 | centerPadding  | | | |
 | cssEase        | | | |
+<<<<<<< HEAD
+=======
+| customPaging   | func | Custom paging templates. [Example](https://github.com/akiran/react-slick/blob/master/examples/CustomPaging.js)| Yes |
+>>>>>>> 4444fc8a93d40e238b6296b386b33dd7512ca456
 | dots           | bool | Should we show the dots at the bottom of the gallery | Yes |
 | dotsClass      | string | Class applied to the dots if they are enabled | Yes |
 | draggable      | bool | Is the gallery scrollable via dragging on desktop? | Yes |
@@ -100,22 +134,28 @@ var SimpleSlider = React.createClass({
 | slidesToScroll | int | Number of slides to scroll for each navigation item
 | speed | int |||
 | swipe | bool |||
-| swipeToSlide | bool |||
+| swipeToSlide | bool | Allow users to drag or swipe directly to a slide irrespective of slidesToScroll | Yes |
 | touchMove | bool |||
 | touchThreshold | int |||
 | variableWidth | bool |||
 | useCSS | bool | Enable/Disable CSS Transitions | Yes |
-| vertical | bool |||
+| vertical | bool | Vertical slide mode | Yes |
 | afterChange | function | callback function called after the current index changes | Yes |
 | beforeChange | function | callback function called before the current index changes | Yes |
 | slickGoTo | int | go to the specified slide number | |
 
 
 ### Methods
+<<<<<<< HEAD
 * slickNext   - function called to change current slide on next slide
 * slickPrev   - function called to change current slide on previous slide
 
 Check this [example](https://github.com/akiran/react-slick/blob/master/examples/PreviousNextMethods.js) for these methods usage
+=======
+* `slickNext()`   - function called to change current slide on next slide ([Example](https://github.com/akiran/react-slick/blob/master/examples/PreviousNextMethods.js))
+* `slickPrev()`   - function called to change current slide on previous slide ([Example](https://github.com/akiran/react-slick/blob/master/examples/PreviousNextMethods.js))
+* `slickGoTo(slideNumber)` - function called to change current slide to given slide number ([Example](https://github.com/akiran/react-slick/blob/master/examples/SlickGoTo.js))
+>>>>>>> 4444fc8a93d40e238b6296b386b33dd7512ca456
 
 ### Custom next/prev arrows
 
@@ -125,7 +165,11 @@ as the values of nextArrow and prevArrow.
 ```js
 class LeftNavButton extends React.Component {
   render() {
+<<<<<<< HEAD
     return <button {...this.props}>Next</button>  
+=======
+    return <button {...this.props}>Next</button>
+>>>>>>> 4444fc8a93d40e238b6296b386b33dd7512ca456
   }
 }
 ```
@@ -133,21 +177,65 @@ class LeftNavButton extends React.Component {
 Important: be sure that you pass your component's props to your clickable element
 like the example above. If you don't, your custom component won't trigger the click handler.
 
+<<<<<<< HEAD
 You can also set onClick={this.props.onClick} if you only want to set the click handler. 
+=======
+You can also set `onClick={this.props.onClick}` if you only want to set the click handler.
+
+### Flexbox support
+If you have flex property on container div of slider, add below css
+```css
+* {
+  min-height: 0;
+  min-width: 0;
+}
+```
+
+### Test Setup
+If you try to run tests with jest in a project that uses react-slick, you my run into this error
+```
+matchMedia not present, legacy browsers require a polyfill
+```
+
+To fix this issue add below snippet in test-setup.js
+```js
+window.matchMedia = window.matchMedia || function() {
+    return {
+        matches : false,
+        addListener : function() {},
+        removeListener: function() {}
+    };
+};
+
+```
+and add below jest config in package.json
+```json
+"jest": {
+    "setupFiles": ["test-setup.js"]
+}
+```
+>>>>>>> 4444fc8a93d40e238b6296b386b33dd7512ca456
 
 
 ### Development
 Want to run demos locally
 
+<<<<<<< HEAD
 ```shell
+=======
+```bash
+>>>>>>> 4444fc8a93d40e238b6296b386b33dd7512ca456
 git clone https://github.com/akiran/react-slick
 npm install
 npm start
-open http://localhost:8000
+open http://localhost:8080
 ```
 
 ### Polyfills for old IE support
 `matchMedia` support from [media-match](https://github.com/weblinc/media-match)
 
+<<<<<<< HEAD
 For premium support, contact me on codementor
 [![Contact me on Codementor](https://cdn.codementor.io/badges/contact_me_github.svg)](https://www.codementor.io/akiran?utm_source=github&utm_medium=button&utm_term=akiran&utm_campaign=github)
+=======
+>>>>>>> 4444fc8a93d40e238b6296b386b33dd7512ca456

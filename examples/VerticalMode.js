@@ -1,23 +1,25 @@
 import React, { Component } from 'react'
 import Slider from '../src/slider'
 
-export default class CenterMode extends Component {
+export default class VerticalMode extends Component {
   render() {
     const settings = {
-      className: 'center',
-      centerMode: true,
+      dots: true,
       infinite: true,
-      centerPadding: '60px',
       slidesToShow: 3,
-<<<<<<< HEAD
-      speed: 500,
-=======
-      speed: 500
->>>>>>> 4444fc8a93d40e238b6296b386b33dd7512ca456
+      slidesToScroll: 1,
+      vertical: true,
+      verticalSwiping: true,
+      beforeChange: function (currentSlide, nextSlide) {
+        console.log('before change', currentSlide, nextSlide);
+      },
+      afterChange: function (currentSlide) {
+        console.log('after change', currentSlide);
+      },
     };
     return (
       <div>
-        <h2>Center Mode</h2>
+        <h2>Vertical Mode</h2>
         <Slider {...settings}>
           <div><h3>1</h3></div>
           <div><h3>2</h3></div>
@@ -25,15 +27,8 @@ export default class CenterMode extends Component {
           <div><h3>4</h3></div>
           <div><h3>5</h3></div>
           <div><h3>6</h3></div>
-          <div><h3>7</h3></div>
-          <div><h3>8</h3></div>
-          <div><h3>9</h3></div>
         </Slider>
       </div>
     );
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 4444fc8a93d40e238b6296b386b33dd7512ca456

@@ -1,23 +1,21 @@
 import React, { Component } from 'react'
 import Slider from '../src/slider'
 
-export default class CenterMode extends Component {
+export default class SwipeToSlide extends Component {
   render() {
     const settings = {
       className: 'center',
-      centerMode: true,
       infinite: true,
       centerPadding: '60px',
-      slidesToShow: 3,
-<<<<<<< HEAD
-      speed: 500,
-=======
-      speed: 500
->>>>>>> 4444fc8a93d40e238b6296b386b33dd7512ca456
+      slidesToShow: 5,
+      swipeToSlide: true,
+      afterChange: function (index) {
+        console.log(`Slider Changed to: ${index + 1}, background: #222; color: #bada55`);
+      }
     };
     return (
       <div>
-        <h2>Center Mode</h2>
+        <h2>Swipe To Slide</h2>
         <Slider {...settings}>
           <div><h3>1</h3></div>
           <div><h3>2</h3></div>
@@ -30,10 +28,6 @@ export default class CenterMode extends Component {
           <div><h3>9</h3></div>
         </Slider>
       </div>
-    );
+    )
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 4444fc8a93d40e238b6296b386b33dd7512ca456

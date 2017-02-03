@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import assign from 'object-assign';
 import classnames from 'classnames';
 
 var getSlideClasses = (spec) => {
@@ -61,9 +60,10 @@ var renderSlides = function (spec) {
   var preCloneSlides = [];
   var postCloneSlides = [];
   var count = React.Children.count(spec.children);
-  var child;
+
 
   React.Children.forEach(spec.children, (elem, index) => {
+    let child;
     var childOnClickOptions = {
       message: 'children',
       index: index,
@@ -76,8 +76,8 @@ var renderSlides = function (spec) {
     } else {
       child = (<div></div>);
     }
-    var childStyle = getSlideStyle(assign({}, spec, {index: index}));
-    var slickClasses = getSlideClasses(assign({index: index}, spec));
+    var childStyle = getSlideStyle(Object.assign({}, spec, {index: index}));
+    var slickClasses = getSlideClasses(Object.assign({index: index}, spec));
     var cssClasses;
 
     if (child.props.className) {
@@ -86,13 +86,20 @@ var renderSlides = function (spec) {
         cssClasses = slickClasses;
     }
 
+    const onClick = function(e) {
+      child.props && child.props.onClick && child.props.onClick(e)
+      if (spec.focusOnSelect) {
+        spec.focusOnSelect(childOnClickOptions)
+      }
+    }
+
     slides.push(React.cloneElement(child, {
       key: 'original' + getKey(child, index),
       'data-index': index,
       className: cssClasses,
       tabIndex: '-1',
-      style: assign({outline: 'none'}, child.props.style || {}, childStyle),
-      onClick: spec.focusOnSelect.bind(null, childOnClickOptions)
+      style: Object.assign({outline: 'none'}, child.props.style || {}, childStyle),
+      onClick
     }));
 
     // variableWidth doesn't wrap properly.
@@ -105,8 +112,8 @@ var renderSlides = function (spec) {
           key: 'precloned' + getKey(child, key),
           'data-index': key,
           className: cssClasses,
-          style: assign({}, child.props.style || {}, childStyle),
-          onClick: this.props.focusOnSelect.bind(null, childOnClickOptions)
+          style: Object.assign({}, child.props.style || {}, childStyle),
+          onClick
         }));
       }
 
@@ -116,8 +123,8 @@ var renderSlides = function (spec) {
           key: 'postcloned' + getKey(child, key),
           'data-index': key,
           className: cssClasses,
-          style: assign({}, child.props.style || {}, childStyle),
-          onClick: this.props.focusOnSelect.bind(null, childOnClickOptions)
+          style: Object.assign({}, child.props.style || {}, childStyle),
+          onClick
         }));
       }
     }

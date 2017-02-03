@@ -1,3 +1,5 @@
+import React from 'react';
+
 var defaultProps = {
     className: '',
     accessibility: true,
@@ -8,6 +10,9 @@ var defaultProps = {
     centerMode: false,
     centerPadding: '50px',
     cssEase: 'ease',
+    customPaging: function(i) {
+        return <button>{i + 1}</button>;
+    },
     dots: false,
     dotsClass: 'slick-dots',
     draggable: true,
@@ -18,7 +23,7 @@ var defaultProps = {
     infinite: true,
     initialSlide: 0,
     lazyLoad: false,
-    pauseOnHover: false,
+    pauseOnHover: true,
     responsive: null,
     rtl: false,
     slide: 'div',
