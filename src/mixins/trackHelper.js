@@ -1,6 +1,5 @@
 'use strict';
 import ReactDOM from 'react-dom';
-import assign from 'object-assign';
 
 var checkSpecKeys = function (spec, keysArray) {
   return keysArray.reduce((value, key) => {
@@ -39,11 +38,11 @@ export var getTrackCSS = function(spec) {
   };
 
   if (trackWidth) {
-    assign(style, { width: trackWidth });
+    Object.assign(style, { width: trackWidth });
   }
 
   if (trackHeight) {
-    assign(style, { height: trackHeight });
+    Object.assign(style, { height: trackHeight });
   }
 
   // Fallback for IE8

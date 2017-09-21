@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import assign from 'object-assign';
 import classnames from 'classnames';
 
 var getSlideClasses = (spec) => {
@@ -76,7 +75,7 @@ var renderSlides = function (spec) {
     } else {
       child = (<div></div>);
     }
-    var childStyle = getSlideStyle(assign({}, spec, {index: index}));
+    var childStyle = getSlideStyle(Object.assign({}, spec, {index: index}));
     const slideClass = child.props.className || ''
 
     const onClick = function(e) {
@@ -91,7 +90,7 @@ var renderSlides = function (spec) {
       'data-index': index,
       className: classnames(getSlideClasses(assign({index: index}, spec)), slideClass),
       tabIndex: '-1',
-      style: assign({outline: 'none'}, child.props.style || {}, childStyle),
+      style: Object.assign({outline: 'none'}, child.props.style || {}, childStyle),
       onClick
     }));
 
@@ -105,7 +104,7 @@ var renderSlides = function (spec) {
           key: 'precloned' + getKey(child, key),
           'data-index': key,
           className: classnames(getSlideClasses(assign({index: key}, spec)), slideClass),
-          style: assign({}, child.props.style || {}, childStyle),
+          style: Object.assign({}, child.props.style || {}, childStyle),
           onClick
         }));
       }
@@ -116,7 +115,7 @@ var renderSlides = function (spec) {
           key: 'postcloned' + getKey(child, key),
           'data-index': key,
           className: classnames(getSlideClasses(assign({index: key}, spec)), slideClass),
-          style: assign({}, child.props.style || {}, childStyle),
+          style: Object.assign({}, child.props.style || {}, childStyle),
           onClick
         }));
       }

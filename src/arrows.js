@@ -6,7 +6,10 @@ import Helpers from './mixins/helpers';
 
 export class PrevArrow extends React.Component {
   clickHandler(options, e) {
-    if (e) { e.preventDefault(); }
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     this.props.clickHandler(options, e);
   }
   render() {
@@ -22,6 +25,7 @@ export class PrevArrow extends React.Component {
       key: '0',
       'data-role': 'none',
       className: classnames(prevClasses),
+      currentSlide: this.props.currentSlide,
       style: {display: 'block'},
       onClick: prevHandler
     };
@@ -44,7 +48,10 @@ export class PrevArrow extends React.Component {
 
 export class NextArrow extends React.Component {
   clickHandler(options, e) {
-    if (e) { e.preventDefault(); }
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     this.props.clickHandler(options, e);
   }
   render() {
@@ -60,6 +67,8 @@ export class NextArrow extends React.Component {
       key: '1',
       'data-role': 'none',
       className: classnames(nextClasses),
+      currentSlide: this.props.currentSlide,
+      slideCount: this.props.slideCount,
       style: {display: 'block'},
       onClick: nextHandler
     };

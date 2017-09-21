@@ -8,7 +8,11 @@ export default class SimpleSlider extends Component {
       infinite: true,
       speed: 500,
       slidesToShow: 1,
+<<<<<<< HEAD
       slidesToScroll: 1
+=======
+      slidesToScroll: 1,
+>>>>>>> master
     };
     return (
       <div>

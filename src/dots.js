@@ -46,6 +46,7 @@ export class Dots extends React.Component {
 
       return (
         <li key={i} className={className}>
+          <button onClick={this.clickHandler.bind(this, dotOptions)}>{i + 1}</button>
           {React.cloneElement(this.props.customPaging(i), {onClick})}
         </li>
       );

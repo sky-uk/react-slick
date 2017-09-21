@@ -1,4 +1,7 @@
-node_modules
+node_modules/
+.DS_Store
+.idea/
+.vscode/
 bower_components
 .sass-cache
 build
@@ -6,8 +9,12 @@ demos/*
 demos1
 TODO.md
 npm-debug.log
+dist
 lib
 *.sublime-*
 .idea
+<<<<<<< HEAD
 dist
 yarn.lock
+=======
+>>>>>>> master

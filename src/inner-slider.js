@@ -5,15 +5,13 @@ import EventHandlersMixin from './mixins/event-handlers';
 import HelpersMixin from './mixins/helpers';
 import initialState from './initial-state';
 import defaultProps from './default-props';
-import createReactClass from 'create-react-class';
-import classnames from 'classnames';
-import assign from 'object-assign';
+import classnames from 'classnames'
 
-import { Track } from './track';
-import { Dots } from './dots';
-import { PrevArrow, NextArrow } from './arrows';
+import {Track} from './track';
+import {Dots} from './dots';
+import {PrevArrow, NextArrow} from './arrows';
 
-export var InnerSlider = createReactClass({
+export var InnerSlider = React.createClass({
   mixins: [HelpersMixin, EventHandlersMixin],
   list: null,
   track: null,
@@ -76,25 +74,25 @@ export var InnerSlider = createReactClass({
       window.detachEvent('onresize', this.onWindowResized);
     }
     if (this.state.autoPlayTimer) {
-      clearInterval(this.state.autoPlayTimer);
+      window.clearInterval(this.state.autoPlayTimer);
     }
   },
-  componentWillReceiveProps: function (nextProps) {
+  componentWillReceiveProps: function(nextProps) {
     if (this.props.slickGoTo != nextProps.slickGoTo) {
       if (process.env.NODE_ENV !== 'production') {
         console.warn('react-slick deprecation warning: slickGoTo prop is deprecated and it will be removed in next release. Use slickGoTo method instead')
       }
       this.changeSlide({
-        message: 'index',
-        index: nextProps.slickGoTo,
-        currentSlide: this.state.currentSlide
+          message: 'index',
+          index: nextProps.slickGoTo,
+          currentSlide: this.state.currentSlide
       });
     } else if (this.state.currentSlide >= nextProps.children.length) {
       this.update(nextProps);
       this.changeSlide({
-        message: 'index',
-        index: nextProps.children.length - nextProps.slidesToShow,
-        currentSlide: this.state.currentSlide
+          message: 'index',
+          index: nextProps.children.length - nextProps.slidesToShow,
+          currentSlide: this.state.currentSlide
       });
     } else {
       this.update(nextProps);
@@ -113,14 +111,13 @@ export var InnerSlider = createReactClass({
     delete this.animationEndCallback;
   },
   slickPrev: function () {
-    this.changeSlide({ message: 'previous' });
+    this.changeSlide({message: 'previous'});
   },
   slickNext: function () {
-    this.changeSlide({ message: 'next' });
+    this.changeSlide({message: 'next'});
   },
   slickGoTo: function (slide) {
-    slide = Number(slide)
-    !isNaN(slide) && this.changeSlide({
+    typeof slide === 'number' && this.changeSlide({
       message: 'index',
       index: slide,
       currentSlide: this.state.currentSlide
@@ -179,8 +176,7 @@ export var InnerSlider = createReactClass({
       nextArrow: this.props.nextArrow,
       clickHandler: this.changeSlide
     };
-
-    if (this.props.arrows) {
+    if (this.props.arrows && this.state.slideCount > this.props.slidesToShow) {
       prevArrow = (<PrevArrow {...arrowProps} />);
       nextArrow = (<NextArrow {...arrowProps} />);
     }
@@ -209,7 +205,7 @@ export var InnerSlider = createReactClass({
       }
     }
 
-    const listStyle = assign({}, verticalHeightStyle, centerPaddingStyle);
+    const listStyle = Object.assign({}, verticalHeightStyle, centerPaddingStyle);
 
     return (
       <div
@@ -218,27 +214,30 @@ export var InnerSlider = createReactClass({
         onMouseLeave={this.onInnerSliderLeave}
         onMouseOver={this.onInnerSliderOver}
       >
-        {prevArrow}
         <div
           ref={this.listRefHandler}
           className="slick-list"
           style={listStyle}
           onMouseDown={this.swipeStart}
-          onMouseMove={this.state.dragging ? this.swipeMove : null}
+          onMouseMove={this.state.dragging ? this.swipeMove: null}
           onMouseUp={this.swipeEnd}
-          onMouseLeave={this.state.dragging ? this.swipeEnd : null}
+          onMouseLeave={this.state.dragging ? this.swipeEnd: null}
           onTouchStart={this.swipeStart}
-          onTouchMove={this.state.dragging ? this.swipeMove : null}
+          onTouchMove={this.state.dragging ? this.swipeMove: null}
           onTouchEnd={this.swipeEnd}
-          onTouchCancel={this.state.dragging ? this.swipeEnd : null}
+          onTouchCancel={this.state.dragging ? this.swipeEnd: null}
           onKeyDown={this.props.accessibility ? this.keyHandler : null}>
           <Track ref={this.trackRefHandler} {...trackProps}>
             {this.props.children}
           </Track>
         </div>
-        {nextArrow}
-        {dots}
-      </div>
+        <div className="slick-arrow-container">
+          {prevArrow}
+          {nextArrow}
+        </div>
+          {dots}
+          
+        </div>
     );
   }
 });

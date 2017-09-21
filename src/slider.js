@@ -2,7 +2,6 @@
 
 import React from 'react';
 import {InnerSlider} from './inner-slider';
-import assign from 'object-assign';
 import json2mq from 'json2mq';
 import defaultProps from './default-props';
 import canUseDOM from 'can-use-dom';
@@ -73,9 +72,14 @@ export default class Slider extends React.Component {
     var newProps;
     if (this.state.breakpoint) {
       newProps = this.props.responsive.filter(resp => resp.breakpoint === this.state.breakpoint);
-      settings = newProps[0].settings === 'unslick' ? 'unslick' : assign({}, this.props, newProps[0].settings);
+      settings = newProps[0].settings === 'unslick' ? 'unslick' : Object.assign({}, this.props, newProps[0].settings);
     } else {
-      settings = assign({}, defaultProps, this.props);
+      settings = Object.assign({}, defaultProps, this.props);
+    }
+
+    var children = this.props.children;
+    if(!Array.isArray(children)) {
+      children = [children]
     }
 
     var children = this.props.children;
@@ -87,6 +91,11 @@ export default class Slider extends React.Component {
     children = children.filter(function(child){
       return !!child
     })
+
+    if (children.length <= settings.slidesToShow) {
+      settings.infinite = false;
+      settings.autoplay = false;
+    }
 
     if (settings === 'unslick') {
       // if 'unslick' responsive breakpoint setting used, just return the <Slider> tag nested HTML
