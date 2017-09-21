@@ -13,8 +13,5 @@ dist
 lib
 *.sublime-*
 .idea
-<<<<<<< HEAD
 dist
 yarn.lock
-=======
->>>>>>> master

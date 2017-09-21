@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Slider from '../src/slider'
 
-<<<<<<< HEAD
 function SampleNextArrow(props) {
   const {className, style, onClick} = props
   return (
@@ -24,21 +23,6 @@ function SamplePrevArrow(props) {
   );
 }
 
-=======
-var SampleNextArrow = React.createClass({
-  render: function() {
-    return <div {...this.props} style={{display: 'block', background: 'red'}}></div>;
-  }
-});
-
-var SamplePrevArrow = React.createClass({
-  render: function() {
-    return (
-      <div {...this.props} style={{display: 'block', background: 'red'}}></div>
-    );
-  }
-});
->>>>>>> master
 
 export default class CustomArrows extends Component {
   render() {
@@ -64,8 +48,4 @@ export default class CustomArrows extends Component {
       </div>
     );
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> master
