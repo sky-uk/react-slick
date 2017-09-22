@@ -1,18 +1,14 @@
 import React, { Component } from 'react'
 import Slider from '../src/slider'
-import {baseUrl} from './config'
+import { baseUrl } from './config'
 
 export default class SlickGoTo extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      slickGoTo: 0
-    }
     this.changeHandler = this.changeHandler.bind(this)
   }
   changeHandler(e) {
-    this.setState({slickGoTo: e.target.value});
-    this.changeHandler = this.changeHandler.bind(this)
+    this.refs.slider.slickGoTo(e.target.value)
   }
   render() {
     const settings = {
@@ -21,6 +17,7 @@ export default class SlickGoTo extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
+      ...this.props
     };
     return (
       <div>

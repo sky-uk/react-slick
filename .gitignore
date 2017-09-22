@@ -10,6 +10,8 @@ demos1
 TODO.md
 npm-debug.log
 dist
-lib
+lib/
 *.sublime-*
 .idea
+dist
+yarn.lock
